@@ -1,162 +1,162 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://YOUR-USERNAME.github.io/mulesoft-project-tools/</loc>
+    <loc>https://mulesoftdevtools.github.io/mulesoft-project-tools/</loc>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://YOUR-USERNAME.github.io/mulesoft-project-tools/about.html</loc>
+    <loc>https://mulesoftdevtools.github.io/mulesoft-project-tools/about.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://YOUR-USERNAME.github.io/mulesoft-project-tools/contact.html</loc>
+    <loc>https://mulesoftdevtools.github.io/mulesoft-project-tools/contact.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://YOUR-USERNAME.github.io/mulesoft-project-tools/privacy-policy.html</loc>
+    <loc>https://mulesoftdevtools.github.io/mulesoft-project-tools/privacy-policy.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://YOUR-USERNAME.github.io/mulesoft-project-tools/terms.html</loc>
+    <loc>https://mulesoftdevtools.github.io/mulesoft-project-tools/terms.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://YOUR-USERNAME.github.io/mulesoft-project-tools/raml-to-openapi.html</loc>
+    <loc>https://mulesoftdevtools.github.io/mulesoft-project-tools/raml-to-openapi.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://YOUR-USERNAME.github.io/mulesoft-project-tools/openapi-validator.html</loc>
+    <loc>https://mulesoftdevtools.github.io/mulesoft-project-tools/openapi-validator.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://YOUR-USERNAME.github.io/mulesoft-project-tools/openapi-converter.html</loc>
+    <loc>https://mulesoftdevtools.github.io/mulesoft-project-tools/openapi-converter.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://YOUR-USERNAME.github.io/mulesoft-project-tools/raml-formatter.html</loc>
+    <loc>https://mulesoftdevtools.github.io/mulesoft-project-tools/raml-formatter.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://YOUR-USERNAME.github.io/mulesoft-project-tools/api-endpoint-extractor.html</loc>
+    <loc>https://mulesoftdevtools.github.io/mulesoft-project-tools/api-endpoint-extractor.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://YOUR-USERNAME.github.io/mulesoft-project-tools/munit-generator.html</loc>
+    <loc>https://mulesoftdevtools.github.io/mulesoft-project-tools/munit-generator.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://YOUR-USERNAME.github.io/mulesoft-project-tools/cron-generator.html</loc>
+    <loc>https://mulesoftdevtools.github.io/mulesoft-project-tools/cron-generator.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://YOUR-USERNAME.github.io/mulesoft-project-tools/properties-converter.html</loc>
+    <loc>https://mulesoftdevtools.github.io/mulesoft-project-tools/properties-converter.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://YOUR-USERNAME.github.io/mulesoft-project-tools/json-formatter.html</loc>
+    <loc>https://mulesoftdevtools.github.io/mulesoft-project-tools/json-formatter.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://YOUR-USERNAME.github.io/mulesoft-project-tools/json-validator.html</loc>
+    <loc>https://mulesoftdevtools.github.io/mulesoft-project-tools/json-validator.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://YOUR-USERNAME.github.io/mulesoft-project-tools/json-to-xml.html</loc>
+    <loc>https://mulesoftdevtools.github.io/mulesoft-project-tools/json-to-xml.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://YOUR-USERNAME.github.io/mulesoft-project-tools/json-to-csv.html</loc>
+    <loc>https://mulesoftdevtools.github.io/mulesoft-project-tools/json-to-csv.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://YOUR-USERNAME.github.io/mulesoft-project-tools/xml-formatter.html</loc>
+    <loc>https://mulesoftdevtools.github.io/mulesoft-project-tools/xml-formatter.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://YOUR-USERNAME.github.io/mulesoft-project-tools/yaml-json-converter.html</loc>
+    <loc>https://mulesoftdevtools.github.io/mulesoft-project-tools/yaml-json-converter.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://YOUR-USERNAME.github.io/mulesoft-project-tools/base64-encoder.html</loc>
+    <loc>https://mulesoftdevtools.github.io/mulesoft-project-tools/base64-encoder.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://YOUR-USERNAME.github.io/mulesoft-project-tools/url-encoder.html</loc>
+    <loc>https://mulesoftdevtools.github.io/mulesoft-project-tools/url-encoder.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://YOUR-USERNAME.github.io/mulesoft-project-tools/jwt-decoder.html</loc>
+    <loc>https://mulesoftdevtools.github.io/mulesoft-project-tools/jwt-decoder.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://YOUR-USERNAME.github.io/mulesoft-project-tools/hash-generator.html</loc>
+    <loc>https://mulesoftdevtools.github.io/mulesoft-project-tools/hash-generator.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://YOUR-USERNAME.github.io/mulesoft-project-tools/uuid-generator.html</loc>
+    <loc>https://mulesoftdevtools.github.io/mulesoft-project-tools/uuid-generator.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://YOUR-USERNAME.github.io/mulesoft-project-tools/html-escape.html</loc>
+    <loc>https://mulesoftdevtools.github.io/mulesoft-project-tools/html-escape.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://YOUR-USERNAME.github.io/mulesoft-project-tools/curl-generator.html</loc>
+    <loc>https://mulesoftdevtools.github.io/mulesoft-project-tools/curl-generator.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://YOUR-USERNAME.github.io/mulesoft-project-tools/timestamp-converter.html</loc>
+    <loc>https://mulesoftdevtools.github.io/mulesoft-project-tools/timestamp-converter.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://YOUR-USERNAME.github.io/mulesoft-project-tools/regex-tester.html</loc>
+    <loc>https://mulesoftdevtools.github.io/mulesoft-project-tools/regex-tester.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://YOUR-USERNAME.github.io/mulesoft-project-tools/text-diff.html</loc>
+    <loc>https://mulesoftdevtools.github.io/mulesoft-project-tools/text-diff.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://YOUR-USERNAME.github.io/mulesoft-project-tools/case-converter.html</loc>
+    <loc>https://mulesoftdevtools.github.io/mulesoft-project-tools/case-converter.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://YOUR-USERNAME.github.io/mulesoft-project-tools/xpath-tester.html</loc>
+    <loc>https://mulesoftdevtools.github.io/mulesoft-project-tools/xpath-tester.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://YOUR-USERNAME.github.io/mulesoft-project-tools/url-parser.html</loc>
+    <loc>https://mulesoftdevtools.github.io/mulesoft-project-tools/url-parser.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
