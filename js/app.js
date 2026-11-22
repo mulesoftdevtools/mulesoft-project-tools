@@ -59,6 +59,43 @@
   }
 
   /* ---------------------------------------------------------------
+     Favourites & recently used (stored only in this browser)
+     --------------------------------------------------------------- */
+  var FAV_KEY = "mpt-favorites";
+  var RECENT_KEY = "mpt-recent";
+  var RECENT_MAX = 8;
+
+  function readList(key) {
+    try {
+      var v = JSON.parse(storageGet(key) || "[]");
+      return Array.isArray(v) ? v.filter(function (id) { return toolById(id); }) : [];
+    } catch (e) { return []; }
+  }
+  function writeList(key, list) { storageSet(key, JSON.stringify(list)); }
+
+  function toolById(id) {
+    for (var i = 0; i < DATA.tools.length; i++) if (DATA.tools[i].id === id) return DATA.tools[i];
+    return null;
+  }
+
+  function getFavorites() { return readList(FAV_KEY); }
+  function isFavorite(id) { return getFavorites().indexOf(id) !== -1; }
+  function toggleFavorite(id) {
+    var list = getFavorites(), i = list.indexOf(id);
+    if (i === -1) list.unshift(id); else list.splice(i, 1);
+    writeList(FAV_KEY, list);
+    document.dispatchEvent(new CustomEvent("mpt:favorites"));
+    return i === -1;
+  }
+  function getRecent() { return readList(RECENT_KEY); }
+  function recordRecent(id) {
+    var list = getRecent().filter(function (x) { return x !== id; });
+    list.unshift(id);
+    writeList(RECENT_KEY, list.slice(0, RECENT_MAX));
+  }
+  function clearRecent() { writeList(RECENT_KEY, []); }
+
+  /* ---------------------------------------------------------------
      Theme
      --------------------------------------------------------------- */
   var THEME_KEY = "mpt-theme";
@@ -109,6 +146,7 @@
   function buildSidebar() {
     var sidebar = byId("sidebar");
     if (!sidebar) return;
+    sidebar.innerHTML = "";
     var page = currentPage();
     var frag = document.createDocumentFragment();
 
@@ -120,6 +158,20 @@
     }, icon("grid") + "<span>All tools</span>");
     homeGroup.appendChild(homeLink);
     frag.appendChild(homeGroup);
+
+    var favs = getFavorites();
+    if (favs.length) {
+      var favGroup = el("div", { class: "sidebar-group sidebar-favs" });
+      favGroup.appendChild(el("div", { class: "sidebar-title" }, icon("star") + "<span>Favourites</span>"));
+      favs.forEach(function (id) {
+        var t = toolById(id), href = t.id + ".html";
+        favGroup.appendChild(el("a", {
+          class: "sidebar-link" + (page === href ? " is-active" : ""),
+          href: href
+        }, icon(t.icon) + "<span>" + escapeHtml(t.name) + "</span>"));
+      });
+      frag.appendChild(favGroup);
+    }
 
     DATA.categories.forEach(function (cat) {
       var tools = DATA.tools.filter(function (t) { return t.cat === cat.id; });
@@ -518,8 +570,149 @@
       });
     });
 
+    attachFileLoader(input, { id: "t-open", accept: config.accept });
     updateInputMeta();
     return { run: run, setOutput: setOutput, getInput: function () { return input.value; } };
+  }
+
+  /* ---------------------------------------------------------------
+     Tool page extras: favourite button + recently-used tracking
+     --------------------------------------------------------------- */
+  function currentToolId() {
+    var id = currentPage().replace(/\.html$/, "");
+    return toolById(id) ? id : null;
+  }
+
+  function initToolPage() {
+    var id = currentToolId();
+    if (!id) return;
+    recordRecent(id);
+    var header = $(".tool-header-main");
+    if (!header) return;
+    var btn = el("button", { type: "button", class: "fav-btn", id: "fav-toggle" });
+    function paint() {
+      var on = isFavorite(id);
+      btn.classList.toggle("is-on", on);
+      btn.innerHTML = icon(on ? "star-filled" : "star") + "<span>" + (on ? "Favourite" : "Add to favourites") + "</span>";
+      btn.setAttribute("aria-pressed", on ? "true" : "false");
+      btn.setAttribute("title", on ? "Remove from favourites" : "Add to favourites — favourites appear at the top of the sidebar and the home page");
+    }
+    btn.addEventListener("click", function () {
+      var on = toggleFavorite(id);
+      paint();
+      toast(on ? "Added to favourites" : "Removed from favourites");
+    });
+    paint();
+    header.appendChild(btn);
+    document.addEventListener("mpt:favorites", buildSidebar);
+  }
+
+  /* ---------------------------------------------------------------
+     Keyboard shortcuts: Ctrl/Cmd+Enter runs the tool, ? opens help
+     --------------------------------------------------------------- */
+  var SHORTCUTS = [
+    ["Ctrl / ⌘ + K", "Search all tools"],
+    ["/", "Focus the search box"],
+    ["Ctrl / ⌘ + Enter", "Run the current tool (Format, Convert, Generate…)"],
+    ["Ctrl / ⌘ + Shift + C", "Copy the result"],
+    ["Ctrl / ⌘ + O", "Open a file into the input (on tools with an input box)"],
+    ["Esc", "Close search, menus and this dialog"],
+    ["?", "Show this list of shortcuts"]
+  ];
+
+  function openShortcuts() {
+    var existing = byId("shortcut-modal");
+    if (existing) { existing.remove(); return; }
+    var rows = SHORTCUTS.map(function (s) {
+      return "<tr><td><span class=\"kbd\">" + escapeHtml(s[0]) + "</span></td><td>" + escapeHtml(s[1]) + "</td></tr>";
+    }).join("");
+    var modal = el("div", { class: "modal-backdrop", id: "shortcut-modal", role: "dialog", "aria-modal": "true", "aria-labelledby": "shortcut-title" },
+      "<div class=\"modal\"><div class=\"modal-head\"><h2 id=\"shortcut-title\">" + icon("keyboard") + " Keyboard shortcuts</h2>" +
+      "<button type=\"button\" class=\"icon-btn\" id=\"shortcut-close\" aria-label=\"Close\">" + icon("x") + "</button></div>" +
+      "<table class=\"data\"><tbody>" + rows + "</tbody></table></div>");
+    document.body.appendChild(modal);
+    var close = function () { modal.remove(); };
+    modal.addEventListener("click", function (e) { if (e.target === modal) close(); });
+    byId("shortcut-close").addEventListener("click", close);
+    byId("shortcut-close").focus();
+  }
+
+  function initShortcuts() {
+    document.addEventListener("keydown", function (e) {
+      var tag = (document.activeElement && document.activeElement.tagName) || "";
+      var typing = tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT";
+      var mod = e.ctrlKey || e.metaKey;
+      if (mod && e.key === "Enter") {
+        var run = $(".panel .btn-primary");
+        if (run) { e.preventDefault(); run.click(); }
+      } else if (mod && e.shiftKey && (e.key === "C" || e.key === "c")) {
+        var copyBtn = byId("t-copy") || $(".panel [id$='-copy']");
+        if (copyBtn) { e.preventDefault(); copyBtn.click(); }
+      } else if (mod && (e.key === "o" || e.key === "O") && byId("t-open")) {
+        e.preventDefault();
+        byId("t-open").click();
+      } else if (e.key === "?" && !typing) {
+        e.preventDefault();
+        openShortcuts();
+      } else if (e.key === "Escape" && byId("shortcut-modal")) {
+        byId("shortcut-modal").remove();
+      }
+    });
+    var link = byId("shortcuts-link");
+    if (link) link.addEventListener("click", function (e) { e.preventDefault(); openShortcuts(); });
+  }
+
+  /* ---------------------------------------------------------------
+     Load a local file into a textarea (button + drag & drop).
+     The file is read in the browser with FileReader — never uploaded.
+     --------------------------------------------------------------- */
+  var MAX_FILE = 15 * 1024 * 1024;
+
+  function readFileInto(file, textarea) {
+    if (!file) return;
+    if (file.size > MAX_FILE) { toast("That file is larger than 15 MB"); return; }
+    var reader = new FileReader();
+    reader.onload = function () {
+      textarea.value = String(reader.result || "");
+      textarea.dispatchEvent(new Event("input", { bubbles: true }));
+      toast("Loaded " + file.name);
+    };
+    reader.onerror = function () { toast("Could not read " + file.name); };
+    reader.readAsText(file);
+  }
+
+  function attachFileLoader(textarea, opts) {
+    if (!textarea || textarea.getAttribute("data-file-loader")) return;
+    textarea.setAttribute("data-file-loader", "1");
+    opts = opts || {};
+    var picker = el("input", { type: "file", class: "sr-only", tabindex: "-1", "aria-hidden": "true" });
+    if (opts.accept) picker.setAttribute("accept", opts.accept);
+    picker.addEventListener("change", function () {
+      readFileInto(picker.files && picker.files[0], textarea);
+      picker.value = "";
+    });
+    document.body.appendChild(picker);
+
+    var head = textarea.parentNode && textarea.parentNode.querySelector(".io-head");
+    if (head) {
+      var btn = el("button", { type: "button", class: "btn btn-ghost btn-sm io-open", title: "Open a local file (it is read in your browser, not uploaded)" },
+        icon("upload") + "<span>Open file</span>");
+      if (opts.id) btn.id = opts.id;
+      btn.addEventListener("click", function () { picker.click(); });
+      var meta = head.querySelector(".io-meta");
+      head.insertBefore(btn, meta || null);
+    }
+
+    var depth = 0;
+    textarea.addEventListener("dragenter", function (e) { e.preventDefault(); depth++; textarea.classList.add("is-drop"); });
+    textarea.addEventListener("dragover", function (e) { e.preventDefault(); });
+    textarea.addEventListener("dragleave", function () { depth = Math.max(0, depth - 1); if (!depth) textarea.classList.remove("is-drop"); });
+    textarea.addEventListener("drop", function (e) {
+      depth = 0;
+      textarea.classList.remove("is-drop");
+      var files = e.dataTransfer && e.dataTransfer.files;
+      if (files && files.length) { e.preventDefault(); readFileInto(files[0], textarea); }
+    });
   }
 
   /* ---------------------------------------------------------------
@@ -540,6 +733,10 @@
     simpleTool: simpleTool,
     readOptions: readOptions,
     searchTools: searchTools,
+    attachFileLoader: attachFileLoader,
+    favorites: { list: getFavorites, has: isFavorite, toggle: toggleFavorite },
+    recent: { list: getRecent, clear: clearRecent },
+    toolById: toolById,
     data: DATA
   };
 
@@ -552,6 +749,12 @@
     initSidebarToggle();
     initSearch();
     initTopNav();
+    initToolPage();
+    initShortcuts();
+    $$("textarea.code-area").forEach(function (ta) {
+      if (ta.id === "t-input") return;            // simpleTool attaches its own loader
+      attachFileLoader(ta);
+    });
     var year = byId("year");
     if (year) year.textContent = new Date().getFullYear();
   }

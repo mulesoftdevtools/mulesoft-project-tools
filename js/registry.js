@@ -88,6 +88,30 @@ window.MPT_DATA = {
       "keywords": "properties yaml convert mule configuration config dotted keys nested java"
     },
     {
+      "id": "json-to-dataweave",
+      "name": "JSON to DataWeave Generator",
+      "cat": "mulesoft",
+      "icon": "variable",
+      "short": "Generate a DataWeave 2.0 mapping script from an example JSON payload.",
+      "keywords": "dataweave dw 2.0 transform message mapping generator json script mule 4 map payload"
+    },
+    {
+      "id": "json-schema-generator",
+      "name": "JSON Schema & RAML Type Generator",
+      "cat": "mulesoft",
+      "icon": "layers",
+      "short": "Infer a JSON Schema, RAML 1.0 DataType or OpenAPI schema from an example payload.",
+      "keywords": "json schema raml datatype type fragment openapi schema generator infer example payload exchange"
+    },
+    {
+      "id": "mule-log-analyzer",
+      "name": "Mule Log Analyzer",
+      "cat": "mulesoft",
+      "icon": "bug",
+      "short": "Parse Mule 4 and CloudHub logs into a filterable table with error-type and flow summaries.",
+      "keywords": "mule log analyzer parser cloudhub runtime manager error type event correlation id flow logs debug troubleshoot"
+    },
+    {
       "id": "json-formatter",
       "name": "JSON Formatter & Beautifier",
       "short": "Pretty-print, minify and sort JSON with your choice of indentation.",
@@ -136,6 +160,30 @@ window.MPT_DATA = {
       "keywords": "yaml json convert transform config kubernetes manifest parse"
     },
     {
+      "id": "jsonpath-tester",
+      "name": "JSONPath Tester",
+      "cat": "data",
+      "icon": "route",
+      "short": "Evaluate JSONPath expressions with filters and see the DataWeave equivalent.",
+      "keywords": "jsonpath json path query tester filter selector evaluate dataweave expression"
+    },
+    {
+      "id": "json-diff",
+      "name": "JSON Diff & Compare",
+      "cat": "data",
+      "icon": "git-compare",
+      "short": "Compare two JSON documents structurally, ignoring key order and formatting.",
+      "keywords": "json diff compare difference semantic structural payload changes regression"
+    },
+    {
+      "id": "sql-formatter",
+      "name": "SQL Formatter",
+      "cat": "data",
+      "icon": "database",
+      "short": "Format SQL for the Mule Database connector and list its :named parameters.",
+      "keywords": "sql formatter beautify pretty print query database connector mule named parameters minify"
+    },
+    {
       "id": "base64-encoder",
       "name": "Base64 Encoder & Decoder",
       "short": "Encode text to Base64 or decode it back, with full Unicode support.",
@@ -182,6 +230,22 @@ window.MPT_DATA = {
       "cat": "encoding",
       "icon": "code",
       "keywords": "html escape unescape entities encode decode xss sanitise special characters"
+    },
+    {
+      "id": "basic-auth-generator",
+      "name": "Basic Auth Header Generator",
+      "cat": "encoding",
+      "icon": "lock",
+      "short": "Build an Authorization: Basic header with cURL, DataWeave and Mule snippets \u2014 or decode one.",
+      "keywords": "basic auth authorization header generator decode base64 username password http request credentials"
+    },
+    {
+      "id": "secret-generator",
+      "name": "Password & Secret Key Generator",
+      "cat": "encoding",
+      "icon": "zap",
+      "short": "Generate strong passwords, API secrets and AES keys for Mule secure properties.",
+      "keywords": "password generator secret key random aes secure properties client secret token hex base64 entropy"
     },
     {
       "id": "curl-generator",
@@ -238,6 +302,14 @@ window.MPT_DATA = {
       "cat": "utilities",
       "icon": "link",
       "keywords": "url parser query string parameters decode components host path fragment analyse"
+    },
+    {
+      "id": "http-status-reference",
+      "name": "HTTP Status & Mule Error Reference",
+      "cat": "utilities",
+      "icon": "book-open",
+      "short": "Look up HTTP status codes with their Mule HTTP connector and APIkit error types.",
+      "keywords": "http status codes reference mule error types apikit http:not_found bad_request retry error handling"
     }
   ],
   "icons": {
@@ -305,6 +377,12 @@ window.MPT_DATA = {
     "bug": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m8 2 1.88 1.88\"/><path d=\"M14.12 3.88 16 2\"/><path d=\"M9 7.13V6a3 3 0 1 1 6 0v1.13\"/><path d=\"M12 20c-3.3 0-6-2.7-6-6v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3c0 3.3-2.7 6-6 6\"/><path d=\"M12 20v-9\"/><path d=\"M6.53 9C4.6 8.8 3 7.1 3 5\"/><path d=\"M6 13H2\"/><path d=\"M3 21c0-2.1 1.7-3.9 3.8-4\"/><path d=\"M20.97 5c0 2.1-1.6 3.8-3.5 4\"/><path d=\"M22 13h-4\"/><path d=\"M17.2 17c2.1.1 3.8 1.9 3.8 4\"/></svg>",
     "quote": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h1a1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z\"/><path d=\"M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h1a1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z\"/></svg>",
     "variable": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M8 21s-4-3-4-9 4-9 4-9\"/><path d=\"M16 3s4 3 4 9-4 9-4 9\"/><line x1=\"15\" y1=\"9\" x2=\"9\" y2=\"15\"/><line x1=\"9\" y1=\"9\" x2=\"15\" y2=\"15\"/></svg>",
-    "cpu": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"4\" y=\"4\" width=\"16\" height=\"16\" rx=\"2\"/><rect x=\"9\" y=\"9\" width=\"6\" height=\"6\"/><path d=\"M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2\"/></svg>"
+    "cpu": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"4\" y=\"4\" width=\"16\" height=\"16\" rx=\"2\"/><rect x=\"9\" y=\"9\" width=\"6\" height=\"6\"/><path d=\"M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2\"/></svg>",
+    "star": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z\"/></svg>",
+    "star-filled": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z\"/></svg>",
+    "history": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 12a9 9 0 1 0 3-6.7L3 8\"/><path d=\"M3 3v5h5\"/><path d=\"M12 7v5l4 2\"/></svg>",
+    "keyboard": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"2\" y=\"5\" width=\"20\" height=\"14\" rx=\"2\"/><path d=\"M6 9h.01M10 9h.01M14 9h.01M18 9h.01M6 13h.01M18 13h.01M10 13h4M7 16h10\"/></svg>",
+    "upload": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4\"/><polyline points=\"17 8 12 3 7 8\"/><line x1=\"12\" y1=\"3\" x2=\"12\" y2=\"15\"/></svg>",
+    "list-tree": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M21 12h-8\"/><path d=\"M21 6H8\"/><path d=\"M21 18h-8\"/><path d=\"M3 6v4c0 1.1.9 2 2 2h3\"/><path d=\"M3 10v6c0 1.1.9 2 2 2h3\"/></svg>"
   }
 };

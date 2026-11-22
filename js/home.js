@@ -82,3 +82,38 @@
 
   apply();
 })();
+
+/* =====================================================================
+   Home page — "Favourites" and "Recently used" shortcuts (local only)
+   ===================================================================== */
+(function () {
+  "use strict";
+  var wrap = document.getElementById("home-personal");
+  if (!wrap || !window.MPT || !MPT.favorites) return;
+
+  function chip(t) {
+    return '<a class="quick-chip" href="' + t.id + '.html">' + MPT.icon(t.icon) + "<span>" + MPT.escapeHtml(t.name) + "</span></a>";
+  }
+
+  function render() {
+    var favs = MPT.favorites.list().map(MPT.toolById);
+    var recent = MPT.recent.list().filter(function (id) { return MPT.favorites.list().indexOf(id) === -1; }).slice(0, 6).map(MPT.toolById);
+    var html = "";
+    if (favs.length) {
+      html += '<div class="quick-row"><span class="quick-label">' + MPT.icon("star-filled") + " Favourites</span>" + favs.map(chip).join("") + "</div>";
+    }
+    if (recent.length) {
+      html += '<div class="quick-row"><span class="quick-label">' + MPT.icon("history") + " Recently used</span>" + recent.map(chip).join("") +
+        '<button type="button" class="btn btn-ghost btn-sm" id="home-clear-recent">Clear</button></div>';
+    }
+    if (!html) {
+      html = '<div class="quick-row quick-empty">' + MPT.icon("star") +
+        " <span>Tip: open any tool and press <strong>Add to favourites</strong> to pin it here and at the top of the sidebar.</span></div>";
+    }
+    wrap.innerHTML = html;
+    var clear = document.getElementById("home-clear-recent");
+    if (clear) clear.addEventListener("click", function () { MPT.recent.clear(); render(); });
+  }
+
+  render();
+})();
