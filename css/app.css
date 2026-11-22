@@ -939,3 +939,58 @@ mark.hl { background: var(--warning); color: #1a1205; border-radius: 3px; paddin
   .topbar, .sidebar, .site-footer, .toolbar, .howto { display: none !important; }
   .content { margin: 0; padding: 0; }
 }
+
+/* =====================================================================
+   v2 additions — favourites, quick access, file loader, shortcuts modal
+   ===================================================================== */
+.tool-header-main > div { flex: 1 1 auto; min-width: 0; }
+.fav-btn {
+  flex: 0 0 auto; align-self: flex-start;
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 7px 13px; border-radius: 999px;
+  border: 1px solid var(--border); background: var(--surface);
+  color: var(--text-muted); font: inherit; font-size: .82rem; font-weight: 600;
+  cursor: pointer; transition: color .15s var(--ease), border-color .15s var(--ease), background .15s var(--ease);
+}
+.fav-btn svg { width: 16px; height: 16px; }
+.fav-btn:hover { color: var(--text); border-color: var(--border-strong); }
+.fav-btn.is-on { color: var(--warning); border-color: color-mix(in srgb, var(--warning) 45%, var(--border)); background: var(--warning-soft); }
+.fav-btn:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+@media (max-width: 640px) { .fav-btn span { display: none; } .fav-btn { padding: 8px; } }
+
+#home-personal { margin: 0 0 18px; display: grid; gap: 10px; }
+.quick-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.quick-label { display: inline-flex; align-items: center; gap: 6px; font-size: .78rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .04em; color: var(--text-faint); margin-right: 4px; }
+.quick-label svg { width: 15px; height: 15px; color: var(--warning); }
+.quick-chip {
+  display: inline-flex; align-items: center; gap: 7px; padding: 6px 12px; border-radius: 999px;
+  background: var(--surface); border: 1px solid var(--border); color: var(--text); font-size: .84rem; text-decoration: none;
+  transition: border-color .15s var(--ease), background .15s var(--ease);
+}
+.quick-chip svg { width: 15px; height: 15px; color: var(--primary); }
+.quick-chip:hover { border-color: var(--primary); background: var(--surface-2); }
+.quick-empty { color: var(--text-muted); font-size: .86rem; }
+.quick-empty svg { width: 16px; height: 16px; color: var(--warning); }
+
+.io-head .io-open { margin-left: auto; margin-right: 8px; padding: 3px 9px; }
+.io-head .io-open svg { width: 14px; height: 14px; }
+.code-area.is-drop { outline: 2px dashed var(--primary); outline-offset: -6px; background: var(--primary-soft); }
+
+.modal-backdrop {
+  position: fixed; inset: 0; z-index: 300; display: grid; place-items: center; padding: 20px;
+  background: rgba(5, 8, 20, .62); backdrop-filter: blur(3px);
+}
+.modal {
+  width: min(560px, 100%); max-height: 86vh; overflow: auto;
+  background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg); padding: 18px 20px 20px;
+}
+.modal-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.modal-head h2 { display: flex; align-items: center; gap: 9px; font-size: 1.1rem; margin: 0; }
+.modal-head h2 svg { width: 20px; height: 20px; color: var(--primary); }
+.modal table.data td:first-child { width: 190px; white-space: nowrap; }
+
+.example-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 16px; }
+.example-chips .chip { font-family: var(--mono); font-size: .76rem; }
+.form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px 16px; }
