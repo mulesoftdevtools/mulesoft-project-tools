@@ -1,6 +1,6 @@
 # MuleSoft Project Tools
 
-A free, fast collection of **27 browser-based developer tools** for MuleSoft and API teams — RAML/OpenAPI
+A free, fast collection of **36 browser-based developer tools** for MuleSoft and API teams — RAML/OpenAPI
 conversion, spec validation, JSON/XML formatting, Quartz cron generation, MUnit scaffolding, JWT decoding,
 hashing, diffing and more.
 
@@ -105,7 +105,7 @@ mulesoft-project-tools/
 ├── about.html  contact.html
 ├── privacy-policy.html  terms.html  404.html
 │
-├── raml-to-openapi.html        One page per tool (27 of them)
+├── raml-to-openapi.html        One page per tool (36 of them)
 ├── json-formatter.html
 ├── ...
 │
@@ -132,7 +132,7 @@ Everything is a flat, static file. There is no bundler, no `node_modules`, and n
 
 ## The tools
 
-### MuleSoft & API Design (8)
+### MuleSoft & API Design (11)
 
 | Tool | What it does |
 |---|---|
@@ -144,22 +144,39 @@ Everything is a flat, static file. There is no bundler, no `node_modules`, and n
 | **MUnit Test Generator** | Generates a valid Mule 4 / MUnit 2.x test suite skeleton from a form |
 | **Cron Expression Generator** | Quartz cron builder/explainer with the next 10 run times — supports `L`, `#`, ranges, steps |
 | **Properties ⇄ YAML Converter** | Maps dotted `.properties` keys to nested YAML and back |
+| **JSON to DataWeave Generator** *(new)* | Writes a DataWeave 2.0 mapping from an example payload — `map` for arrays, key renaming, null-safe defaults, JSON/XML/Java/CSV output |
+| **JSON Schema & RAML Type Generator** *(new)* | Infers JSON Schema (draft-07), a RAML 1.0 DataType or an OpenAPI 3.0 schema; detects optional/nullable fields and date/UUID/email formats |
+| **Mule Log Analyzer** *(new)* | Parses Mule 4 / CloudHub logs into a filterable table; summarises levels, busiest flows and Mule error types; exports CSV |
 
-### JSON, XML & Data Formats (6)
+### JSON, XML & Data Formats (9)
 
 JSON Formatter & Beautifier · JSON Validator (exact line/column + likely cause) · JSON ⇄ XML Converter ·
-JSON ⇄ CSV Converter · XML Formatter & Validator · YAML ⇄ JSON Converter
+JSON ⇄ CSV Converter · XML Formatter & Validator · YAML ⇄ JSON Converter ·
+**JSONPath Tester** *(new — filters, slices, recursive descent, DataWeave equivalent)* ·
+**JSON Diff & Compare** *(new — structural diff by JSONPath, optional ignore array order)* ·
+**SQL Formatter** *(new — Mule Database connector aware, lists `:named` parameters)*
 
-### Encoding & Security (6)
+### Encoding & Security (8)
 
 Base64 Encoder/Decoder (Unicode-safe, URL-safe alphabet) · URL Encoder/Decoder · JWT Decoder ·
 Hash Generator (MD5, SHA-1, SHA-256, SHA-384, SHA-512) · UUID Generator (v4 and monotonic v7) ·
-HTML Entity Encoder/Decoder
+HTML Entity Encoder/Decoder ·
+**Basic Auth Header Generator** *(new — header, cURL, DataWeave and Mule config snippets, plus decoder)* ·
+**Password & Secret Key Generator** *(new — unbiased CSPRNG; AES keys sized for Mule secure properties)*
 
-### Developer Utilities (7)
+### Developer Utilities (8)
 
 cURL Command Builder & Parser · Epoch & Timestamp Converter · Regex Tester · Text Diff Checker ·
-Text Case Converter · XPath Tester · URL & Query String Parser
+Text Case Converter · XPath Tester · URL & Query String Parser ·
+**HTTP Status & Mule Error Reference** *(new — status codes mapped to HTTP connector and APIkit error types, with retry guidance)*
+
+### Site-wide features (new)
+
+- **Favourites** — star any tool; favourites are pinned to the top of the sidebar and the home page.
+- **Recently used** — the home page shows the last tools you opened.
+- **Open file / drag & drop** — every input box can load a local file (read in the browser, never uploaded).
+- **Keyboard shortcuts** — `Ctrl/⌘+Enter` runs the tool, `Ctrl/⌘+Shift+C` copies the result, `Ctrl/⌘+O` opens a file,
+  `?` shows the full list (also linked in the footer).
 
 ---
 
@@ -223,12 +240,13 @@ in `sitemap.xml`.
 
 **The shell is built at runtime.** Each page ships a minimal skeleton; `js/app.js` reads `js/registry.js`
 and renders the sidebar, wires the search dropdown, and applies the theme. This is why adding a tool to the
-registry makes it appear in the navigation of all 33 pages at once — there is no duplicated navigation
+registry makes it appear in the navigation of all 42 pages at once — there is no duplicated navigation
 markup to keep in sync.
 
 **Theme.** Light and dark are CSS custom property sets on `<html data-theme>`. A tiny inline script in every
 `<head>` applies the saved preference before first paint, so there is no flash of the wrong theme. The
-preference is the only thing stored in `localStorage` (key `mpt-theme`) and it never leaves the browser.
+preference (`mpt-theme`), favourites (`mpt-favorites`) and recently used tools (`mpt-recent`) are the only things
+stored in `localStorage`; they hold tool IDs only and never leave the browser.
 
 **Search.** `Ctrl/Cmd+K` or `/` focuses the top-bar search from anywhere. Results are scored by name match
 first, then keywords, then description; arrow keys navigate and Enter opens. The home page has its own

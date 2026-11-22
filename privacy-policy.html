@@ -72,9 +72,14 @@
         <p>The Site sets no cookies.</p>
 
         <h2>3. Local storage</h2>
-        <p>The Site stores a single value in your browser's local storage: your light or dark theme preference,
-           under the key <code class="inline">mpt-theme</code>. This never leaves your browser and is used only
-           to keep the interface consistent between visits. Clearing your browser data removes it.</p>
+        <p>The Site stores three small values in your browser's local storage: your light or dark theme preference
+           (<code class="inline">mpt-theme</code>), the list of tools you have marked as favourites
+           (<code class="inline">mpt-favorites</code>) and the last few tools you opened
+           (<code class="inline">mpt-recent</code>). They contain only tool names — never anything you type or paste
+           into a tool. They never leave your browser and are used only to personalise the interface between visits.
+           Clearing your browser data removes them.</p>
+        <p>When you use <strong>Open file</strong> or drag a file onto a tool, the file is read by your browser with
+           the standard FileReader API. It is not uploaded anywhere.</p>
 
         <h2>4. Server logs</h2>
         <p>The Site is served as static files by a hosting provider (for example GitHub Pages). Like virtually
@@ -132,6 +137,7 @@
           <li><a href="contact.html">Contact</a></li>
           <li><a href="privacy-policy.html">Privacy policy</a></li>
           <li><a href="terms.html">Terms of use</a></li>
+          <li><a href="#" id="shortcuts-link">Keyboard shortcuts</a></li>
         </ul>
       </div>
     </div>
